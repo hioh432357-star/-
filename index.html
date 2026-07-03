@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>日常減脂運動計畫</title>
+
+  <style>
+    :root {
+      --main: #5fcf8f;
+      --main-dark: #38a86d;
+      --yellow: #f4c94f;
+      --red: #ef6b6b;
+      --blue: #66c6e8;
+      --text: #333;
+      --gray: #777;
+      --light: #f6f8f7;
+      --card: #ffffff;
+      --radius: 22px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #eaf9f2 0%, #f7f8fa 42%, #ffffff 100%);
+      line-height: 1.7;
+      padding-bottom: 76px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    .hero {
+      padding: 46px 0 28px;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(95, 207, 143, 0.18);
+      border-radius: 30px;
+      padding: clamp(24px, 5vw, 42px);
+      box-shadow: var(--shadow);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 99px;
+      background: rgba(95, 207, 143, 0.15);
+      color: var(--main-dark);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.15;
+      letter-spacing: 1px;
+    }
+
+    h1 span {
+      color: var(--main-dark);
+    }
+
+    .hero p {
+      margin: 0;
+      color: #555;
+      font-size: 17px;
+      max-width: 760px;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-title {
+      margin-bottom: 22px;
+    }
+
+    .section-title span {
+      color: var(--main-dark);
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      font-size: 13px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(26px, 4vw, 38px);
+      margin: 6px 0 8px;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--gray);
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    /* 星期計畫表 */
+    .weekly-table-wrap {
+      overflow-x: auto;
+    }
+
+    .weekly-table {
+      width: 100%;
+      min-width: 880px;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    .weekly-table th,
+    .weekly-table td {
+      padding: 16px 14px;
+      border-bottom: 1px solid #edf1ef;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .weekly-table th {
+      background: var(--light);
+      color: var(--main-dark);
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .weekly-table th:first-child {
+      border-radius: 16px 0 0 16px;
+    }
+
+    .weekly-table th:last-child {
+      border-radius: 0 16px 16px 0;
+    }
+
+    .weekly-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .weekly-table tbody tr:hover {
+      background: #fbfdfc;
+    }
+
+    .day {
+      font-weight: 900;
+      color: var(--main-dark);
+      white-space: nowrap;
+    }
+
+    .type {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(95, 207, 143, 0.15);
+      color: var(--main-dark);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .type.rest {
+      background: #eef1f0;
+      color: #7b8581;
+    }
+
+    .weekly-table ul {
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    .weekly-table li {
+      margin-bottom: 5px;
+    }
+
+    .note {
+      margin-top: 18px;
+      background: #fff8df;
+      border: 1px solid rgba(244, 201, 79, 0.35);
+      border-radius: 18px;
+      padding: 16px 20px;
+      color: #7a6424;
+    }
+
+    /* 紀錄表 */
+    .record-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      gap: 6px;
+    }
+
+    label {
+      font-weight: 800;
+      color: #555;
+      font-size: 14px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid #dfe7e2;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font: inherit;
+      background: #fff;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--main);
+      box-shadow: 0 0 0 4px rgba(95, 207, 143, 0.14);
+    }
+
+    textarea {
+      min-height: 86px;
+      resize: vertical;
+    }
+
+    input[type="file"] {
+      display: block;
+      cursor: pointer;
+      padding: 14px;
+      background: #fff;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .preview-box {
+      display: none;
+      margin-top: 12px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--light);
+      border: 1px solid #e7ece9;
+    }
+
+    .preview-box.active {
+      display: block;
+    }
+
+    .preview-box img {
+      width: 100%;
+      display: block;
+      max-height: 420px;
+      object-fit: contain;
+      background: #f5f7f6;
+    }
+
+    .btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 18px;
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.25s;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--main);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(95, 207, 143, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--main-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: #fff;
+      color: var(--main-dark);
+      border: 1px solid #cfd8d2;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--main);
+      transform: translateY(-2px);
+    }
+
+    .btn-danger {
+      background: #fff;
+      color: var(--red);
+      border: 1px solid rgba(239, 107, 107, 0.45);
+    }
+
+    .record-table-wrap {
+      overflow-x: auto;
+    }
+
+    .record-table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+    }
+
+    .record-table th,
+    .record-table td {
+      padding: 13px 12px;
+      border-bottom: 1px solid #edf1ef;
+      text-align: left;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    .record-table th {
+      background: var(--light);
+      color: var(--main-dark);
+      font-size: 14px;
+    }
+
+    .record-table img {
+      width: 52px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: var(--light);
+      border: 1px solid #e7ece9;
+    }
+
+    .link-btn {
+      border: 0;
+      background: none;
+      padding: 0 4px;
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .edit-btn {
+      color: var(--main-dark);
+    }
+
+    .delete-btn {
+      color: var(--red);
+    }
+
+    .empty {
+      text-align: center;
+      color: var(--gray);
+      padding: 24px 0 !important;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 99;
+      display: none;
+      grid-template-columns: repeat(2, 1fr);
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(95, 207, 143, 0.18);
+      border-radius: 24px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+
+    .bottom-nav a {
+      display: grid;
+      place-items: center;
+      gap: 2px;
+      padding: 10px 6px;
+      color: #66706c;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .bottom-nav span {
+      font-size: 21px;
+      line-height: 1;
+    }
+
+    .bottom-nav a:hover {
+      color: var(--main-dark);
+      background: rgba(95, 207, 143, 0.1);
+    }
+
+    @media (max-width: 760px) {
+      body {
+        background: #f5f7f6;
+      }
+
+      .page {
+        width: min(100% - 28px, 520px);
+      }
+
+      .hero {
+        padding: 24px 0 18px;
+      }
+
+      .hero-card,
+      .card {
+        border-radius: 24px;
+        padding: 20px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p,
+      .section-title p {
+        font-size: 15px;
+      }
+
+      section {
+        padding: 26px 0;
+      }
+
+      .record-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .weekly-table,
+      .record-table {
+        min-width: 0;
+        border-collapse: separate;
+        border-spacing: 0 14px;
+      }
+
+      .weekly-table thead,
+      .record-table thead {
+        display: none;
+      }
+
+      .weekly-table,
+      .weekly-table tbody,
+      .weekly-table tr,
+      .weekly-table td,
+      .record-table,
+      .record-table tbody,
+      .record-table tr,
+      .record-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .weekly-table-wrap,
+      .record-table-wrap {
+        overflow: visible;
+      }
+
+      .weekly-table tr,
+      .record-table tr {
+        background: #fff;
+        border-radius: 22px;
+        padding: 18px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      }
+
+      .weekly-table td,
+      .record-table td {
+        border: 0;
+        padding: 8px 0;
+        white-space: normal;
+      }
+
+      .weekly-table td::before,
+      .record-table td::before {
+        content: attr(data-label);
+        display: block;
+        color: var(--gray);
+        font-size: 13px;
+        font-weight: 800;
+        margin-bottom: 2px;
+      }
+
+      .weekly-table .day::before {
+        display: none;
+      }
+
+      .day {
+        font-size: 22px;
+        padding-bottom: 10px !important;
+      }
+
+      .record-table img {
+        width: 100%;
+        height: auto;
+        max-height: 280px;
+        object-fit: contain;
+      }
+
+      .btn-row {
+        grid-template-columns: 1fr;
+      }
+
+      .bottom-nav {
+        display: grid;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <section class="hero">
+      <div class="page">
+        <div class="hero-card">
+          <div class="tag">🔥 日常減脂運動計畫</div>
+          <h1>用一週節奏，<br>養成<span>穩定運動習慣</span></h1>
+          <p>只保留星期計畫表與上傳紀錄表。星期一到星期五每次控制在 1 小時以內，紀錄可自行新增、編輯、刪除。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="weekly">
+      <div class="page">
+        <div class="section-title">
+          <span>WEEKLY PLAN</span>
+          <h2>星期計畫表</h2>
+          <p>依照星期安排訓練，忙碌時縮短組數也可以，重點是持續。</p>
+        </div>
+
+        <div class="card">
+          <div class="weekly-table-wrap">
+            <table class="weekly-table">
+              <thead>
+                <tr>
+                  <th>星期</th>
+                  <th>主題</th>
+                  <th>時間</th>
+                  <th>內容</th>
+                  <th>提醒</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td class="day" data-label="星期">星期一</td>
+                  <td data-label="主題"><span class="type">臀腿塑形</span></td>
+                  <td data-label="時間">45–55 分鐘</td>
+                  <td data-label="內容">
+                    <ul>
+                      <li>暖身快走 / 動態伸展：5 分鐘</li>
+                      <li>深蹲或椅子坐站：3 組 × 12 下</li>
+                      <li>臀橋：3 組 × 15 下</li>
+                      <li>羅馬尼亞硬舉：3 組 × 10 下</li>
+                      <li>弓箭步：2 組 × 每邊 10 下</li>
+                      <li>收操快走＋伸展：10 分鐘</li>
+                    </ul>
+                  </td>
+                  <td data-label="提醒">控制在 1 小時內，臀腿訓練以動作穩定為主。</td>
+                </tr>
+
+                <tr>
+                  <td class="day" data-label="星期">星期二</td>
+                  <td data-label="主題"><span class="type">有氧＋核心</span></td>
+                  <td data-label="時間">40–50 分鐘</td>
+                  <td data-label="內容">
+                    <ul>
+                      <li>暖身走路：5 分鐘</li>
+                      <li>快走 / 飛輪 / 戶外散步：25–30 分鐘</li>
+                      <li>平板撐：3 組 × 30–45 秒</li>
+                      <li>死蟲：3 組 × 每邊 12 下</li>
+                      <li>反向捲腹：2 組 × 12 下</li>
+                    </ul>
+                  </td>
+                  <td data-label="提醒">心率穩定比爆汗更重要。</td>
+                </tr>
+
+                <tr>
+                  <td class="day" data-label="星期">星期三</td>
+                  <td data-label="主題"><span class="type">上半身＋背部</span></td>
+                  <td data-label="時間">45–55 分鐘</td>
+                  <td data-label="內容">
+                    <ul>
+                      <li>肩頸暖身：5 分鐘</li>
+                      <li>彈力帶划船 / 坐姿划船：3 組 × 12 下</li>
+                      <li>滑輪下拉 / 彈力帶下拉：3 組 × 12 下</li>
+                      <li>啞鈴肩推：2–3 組 × 10 下</li>
+                      <li>伏地挺身 / 牆壁伏地挺身：2 組 × 10 下</li>
+                      <li>側平舉＋伸展：10 分鐘</li>
+                    </ul>
+                  </td>
+                  <td data-label="提醒">避免肩頸代償，背部出力優先。</td>
+                </tr>
+
+                <tr>
+                  <td class="day" data-label="星期">星期四</td>
+                  <td data-label="主題"><span class="type rest">恢復伸展</span></td>
+                  <td data-label="時間">25–40 分鐘</td>
+                  <td data-label="內容">
+                    <ul>
+                      <li>輕鬆散步：15–25 分鐘</li>
+                      <li>髖屈肌伸展：每邊 60 秒</li>
+                      <li>貓牛式：10–15 下</li>
+                      <li>臀橋：2 組 × 15 下</li>
+                      <li>睡前放鬆：5–8 分鐘</li>
+                    </ul>
+                  </td>
+                  <td data-label="提醒">恢復日能降低疲勞與水腫。</td>
+                </tr>
+
+                <tr>
+                  <td class="day" data-label="星期">星期五</td>
+                  <td data-label="主題"><span class="type">全身循環</span></td>
+                  <td data-label="時間">45–55 分鐘</td>
+                  <td data-label="內容">
+                    <ul>
+                      <li>暖身：5 分鐘</li>
+                      <li>啞鈴硬舉：12 下</li>
+                      <li>深蹲推舉：10–12 下</li>
+                      <li>划船：12 下</li>
+                      <li>登山者：20–30 秒</li>
+                      <li>臀橋：15 下</li>
+                      <li>棒式：30–40 秒</li>
+                      <li>以上做 3 輪，收操伸展 8 分鐘</li>
+                    </ul>
+                  </td>
+                  <td data-label="提醒">做 3 輪即可，不用硬拚速度。</td>
+                </tr>
+
+                <tr>
+                  <td class="day" data-label="星期">星期六</td>
+                  <td data-label="主題"><span class="type">戶外燃脂</span></td>
+                  <td data-label="時間">40–60 分鐘</td>
+                  <td data-label="內容">
+                    <ul>
+                      <li>快走 40–60 分鐘</li>
+                      <li>騎腳踏車 40–60 分鐘</li>
+                      <li>爬山 / 戶外走路 60 分鐘</li>
+                      <li>游泳 30–40 分鐘</li>
+                    </ul>
+                  </td>
+                  <td data-label="提醒">選自己喜歡的活動即可。</td>
+                </tr>
+
+                <tr>
+                  <td class="day" data-label="星期">星期日</td>
+                  <td data-label="主題"><span class="type rest">休息＋紀錄</span></td>
+                  <td data-label="時間">10–30 分鐘</td>
+                  <td data-label="內容">
+                    <ul>
+                      <li>完全休息或輕鬆散步</li>
+                      <li>補水、睡眠、放鬆肌肉</li>
+                      <li>檢查本週體重與身體紀錄</li>
+                      <li>整理下週運動安排</li>
+                    </ul>
+                  </td>
+                  <td data-label="提醒">固定紀錄比每天焦慮量體重更有效。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="note">
+            <strong>原則：</strong>星期一到星期五都控制在 1 小時以內。若當天太累，可減少 1 組或只做暖身＋核心，先維持習慣。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="records">
+      <div class="page">
+        <div class="section-title">
+          <span>UPLOAD RECORD</span>
+          <h2>上傳紀錄表</h2>
+          <p>可上傳體脂機截圖作為紀錄，也可以手動輸入體重、BMI、體脂率等資料。</p>
+        </div>
+
+        <div class="record-layout">
+          <div class="card">
+            <form id="recordForm" class="form-grid">
+              <input type="hidden" id="editId">
+
+              <div class="form-row">
+                <label for="recordImage">上傳截圖</label>
+                <input type="file" id="recordImage" accept="image/*,.jpg,.jpeg,.png,.webp">
+                <div class="preview-box" id="previewBox">
+                  <img id="previewImage" alt="截圖預覽">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label for="recordDate">日期</label>
+                <input type="date" id="recordDate" required>
+              </div>
+
+              <div class="form-row">
+                <label for="weight">體重 kg</label>
+                <input type="number" id="weight" step="0.1" placeholder="例如：65.7">
+              </div>
+
+              <div class="form-row">
+                <label for="bmi">BMI</label>
+                <input type="number" id="bmi" step="0.1" placeholder="例如：22.7">
+              </div>
+
+              <div class="form-row">
+                <label for="bodyFat">體脂率 %</label>
+                <input type="number" id="bodyFat" step="0.1" placeholder="例如：30.9">
+              </div>
+
+              <div class="form-row">
+                <label for="waist">腰圍 cm</label>
+                <input type="number" id="waist" step="0.1" placeholder="例如：74">
+              </div>
+
+              <div class="form-row">
+                <label for="note">備註</label>
+                <textarea id="note" placeholder="例如：本週有規律運動、睡眠較少"></textarea>
+              </div>
+
+              <div class="btn-row">
+                <button type="submit" class="btn btn-primary" id="saveBtn">儲存紀錄</button>
+                <button type="button" class="btn btn-outline" id="clearBtn">清空表單</button>
+              </div>
+
+              <button type="button" class="btn btn-danger" id="clearAllBtn">清空全部紀錄</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <div class="record-table-wrap">
+              <table class="record-table">
+                <thead>
+                  <tr>
+                    <th>截圖</th>
+                    <th>日期</th>
+                    <th>體重</th>
+                    <th>BMI</th>
+                    <th>體脂率</th>
+                    <th>腰圍</th>
+                    <th>備註</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="recordTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="手機快速選單">
+    <a href="#weekly"><span>🏃</span>計畫表</a>
+    <a href="#records"><span>📋</span>紀錄表</a>
+  </nav>
+
+  <script>
+    const STORAGE_KEY = "simpleWorkoutUploadRecords";
+
+    const recordForm = document.getElementById("recordForm");
+    const editId = document.getElementById("editId");
+    const recordImage = document.getElementById("recordImage");
+    const previewBox = document.getElementById("previewBox");
+    const previewImage = document.getElementById("previewImage");
+    const recordDate = document.getElementById("recordDate");
+    const weight = document.getElementById("weight");
+    const bmi = document.getElementById("bmi");
+    const bodyFat = document.getElementById("bodyFat");
+    const waist = document.getElementById("waist");
+    const note = document.getElementById("note");
+    const saveBtn = document.getElementById("saveBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const clearAllBtn = document.getElementById("clearAllBtn");
+    const recordTableBody = document.getElementById("recordTableBody");
+
+    let currentImageData = "";
+
+    function today() {
+      return new Date().toISOString().slice(0, 10);
+    }
+
+    function formatDate(value) {
+      return value ? value.replaceAll("-", "/") : "--";
+    }
+
+    function getRecords() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function saveRecords(records) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+        return true;
+      } catch (error) {
+        alert("儲存失敗，可能是瀏覽器儲存空間已滿（通常是截圖太多或太大）。請刪除部分舊紀錄，或改用較小的截圖後再試一次。");
+        return false;
+      }
+    }
+
+    function compressImage(file, maxWidth = 900, quality = 0.72) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        reader.onload = (event) => {
+          const image = new Image();
+
+          image.onload = () => {
+            const scale = Math.min(1, maxWidth / image.width);
+            const canvas = document.createElement("canvas");
+            canvas.width = Math.round(image.width * scale);
+            canvas.height = Math.round(image.height * scale);
+
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+            resolve(canvas.toDataURL("image/jpeg", quality));
+          };
+
+          image.onerror = reject;
+          image.src = event.target.result;
+        };
+
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function resetForm() {
+      editId.value = "";
+      recordForm.reset();
+      recordDate.value = today();
+      currentImageData = "";
+      previewImage.removeAttribute("src");
+      previewBox.classList.remove("active");
+      saveBtn.textContent = "儲存紀錄";
+    }
+
+    function renderRecords() {
+      const records = getRecords().sort((a, b) => new Date(b.date) - new Date(a.date));
+      recordTableBody.innerHTML = "";
+
+      if (records.length === 0) {
+        recordTableBody.innerHTML = '<tr><td colspan="8" class="empty">目前尚無紀錄，請先新增一筆。</td></tr>';
+        return;
+      }
+
+      records.forEach((record) => {
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+          <td data-label="截圖">${record.image ? `<img src="${record.image}" alt="紀錄截圖">` : "--"}</td>
+          <td data-label="日期">${formatDate(record.date)}</td>
+          <td data-label="體重">${record.weight !== "" && record.weight != null ? record.weight + " kg" : "--"}</td>
+          <td data-label="BMI">${record.bmi !== "" && record.bmi != null ? record.bmi : "--"}</td>
+          <td data-label="體脂率">${record.bodyFat !== "" && record.bodyFat != null ? record.bodyFat + "%" : "--"}</td>
+          <td data-label="腰圍">${record.waist !== "" && record.waist != null ? record.waist + " cm" : "--"}</td>
+          <td data-label="備註">${record.note || "--"}</td>
+          <td data-label="操作">
+            <button type="button" class="link-btn edit-btn" data-action="edit" data-id="${record.id}">編輯</button>
+            ｜
+            <button type="button" class="link-btn delete-btn" data-action="delete" data-id="${record.id}">刪除</button>
+          </td>
+        `;
+
+        recordTableBody.appendChild(tr);
+      });
+    }
+
+    recordImage.addEventListener("change", async () => {
+      const file = recordImage.files[0];
+
+      if (!file) return;
+
+      if (!file.type.startsWith("image/")) {
+        alert("請選擇圖片檔。");
+        recordImage.value = "";
+        return;
+      }
+
+      try {
+        currentImageData = await compressImage(file);
+        previewImage.src = currentImageData;
+        previewBox.classList.add("active");
+      } catch (error) {
+        alert("圖片讀取失敗，請重新選擇。");
+        currentImageData = "";
+      }
+    });
+
+    recordForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const records = getRecords();
+      const id = editId.value || String(Date.now());
+
+      const record = {
+        id,
+        image: currentImageData,
+        date: recordDate.value,
+        weight: weight.value.trim(),
+        bmi: bmi.value.trim(),
+        bodyFat: bodyFat.value.trim(),
+        waist: waist.value.trim(),
+        note: note.value.trim()
+      };
+
+      if (!record.date) {
+        alert("請選擇日期。");
+        return;
+      }
+
+      const existingIndex = records.findIndex((item) => item.id === id);
+
+      if (existingIndex >= 0) {
+        records[existingIndex] = record;
+      } else {
+        records.push(record);
+      }
+
+      if (!saveRecords(records)) return;
+
+      renderRecords();
+      resetForm();
+    });
+
+    clearBtn.addEventListener("click", resetForm);
+
+    clearAllBtn.addEventListener("click", () => {
+      if (!confirm("確定要清空全部紀錄嗎？")) return;
+
+      localStorage.removeItem(STORAGE_KEY);
+      renderRecords();
+      resetForm();
+    });
+
+    recordTableBody.addEventListener("click", (event) => {
+      const button = event.target.closest("button");
+      if (!button) return;
+
+      const action = button.dataset.action;
+      const id = button.dataset.id;
+      const records = getRecords();
+      const record = records.find((item) => item.id === id);
+
+      if (!record) return;
+
+      if (action === "delete") {
+        if (!confirm("確定要刪除這筆紀錄嗎？")) return;
+
+        if (!saveRecords(records.filter((item) => item.id !== id))) return;
+
+        renderRecords();
+        if (editId.value === id) resetForm();
+      }
+
+      if (action === "edit") {
+        editId.value = record.id;
+        recordDate.value = record.date || today();
+        weight.value = record.weight || "";
+        bmi.value = record.bmi || "";
+        bodyFat.value = record.bodyFat || "";
+        waist.value = record.waist || "";
+        note.value = record.note || "";
+        currentImageData = record.image || "";
+
+        if (currentImageData) {
+          previewImage.src = currentImageData;
+          previewBox.classList.add("active");
+        } else {
+          previewImage.removeAttribute("src");
+          previewBox.classList.remove("active");
+        }
+
+        saveBtn.textContent = "儲存更新";
+        document.getElementById("records").scrollIntoView({ behavior: "smooth" });
+      }
+    });
+
+    recordDate.value = today();
+    renderRecords();
+  </script>
+</body>
+</html>
